@@ -26,6 +26,36 @@
 # XXXXXXX
 # 2 9
 
+n, m = map(int, input().split(' '))
+arr = []
+for _ in range(n): arr.append(list(input()))
+
+s, t = map(int, input().split(' '))
+s, t , cnt = s-1, t-1, -1
+
+def check(k):
+    max = 0
+    for i in range(m):
+        d = 0
+        for j in range(k, t):
+            if arr[j][i] == 'O': d = d+1
+            else: break
+        if d > max: max = d
+
+    return max
+
+while(s<t):
+    max = check(s)
+    if max==0:
+        cnt=-1
+        break
+    else:
+        s = s+max
+        cnt = cnt+1
+print(cnt)
+
+
+
 # N, M = map(int, input().split(' '))
 # K , CNT = [], -1
 # for i in range(N): K.append(list(input()))
@@ -33,75 +63,74 @@
 # S, T = map(int, input().split(' '))
 # S, T = S-1, T-1
 
-# while(S<=T):
+# def get_max(op):
 #     L = [0 for _ in range(M)]
 #     for i in range(M):
-#         if K[S][i] == 'O':
-#             while(L[i]<T-S and K[S+L[i]][i]!='X'):
-#                 L[i] = L[i]+1
-#             if K[S+L[i]] == ['X' for _ in range(M)] and S+L[i] != T: L[i]=-1
-#     B = 0
-#     for i in range(1, M): 
-#         if L[B] < L[i]: B = i
-#     if L[B]>0:
-#         S = S + L[B]
-#         CNT = CNT + 1
-#     else:
+#         while(op+L[i]<=T and K[op+L[i]][i]=='O'):
+#             L[i] = L[i]+1
+#     return max(L)
+
+# while(S<T):
+#     DATE = get_max(S)
+#     if DATE == 0:
 #         CNT = -1
 #         break
+#     else:
+#         CNT = CNT+1
+#         S = S+DATE
 # print(CNT)
 
-n,m = map(int,input().split())
+# n,m = map(int,input().split())
 
 
-# 2.
-info = [['X']*m] # 날짜를 편하게 확인하기 위해서 0번째 줄은 임의로 추가
+# # 2.
+# info = [['X']*m] # 날짜를 편하게 확인하기 위해서 0번째 줄은 임의로 추가
 
-for i in range(n):
-    info.append(list(input()))
-
-
-# 3. 손님이 머물 날
-s, t = map(int, input().split())
+# for i in range(n):
+#     info.append(list(input()))
 
 
-
-# 4.
-
-
-def check(n):
-
-    maxday=0
-
-    for i in range(m):
-        day=0
-        for j in range(n,t):
-            if info[j][i]=='O':
-                day+=1
-            else:
-                break
-
-        if maxday<day:
-            maxday=day
-    return maxday
+# # 3. 손님이 머물 날
+# s, t = map(int, input().split())
 
 
-count=-1
-today=s
 
-while today<t:
+# # 4.
+
+
+# def check(n):
+
+#     maxday=0
+
+#     for i in range(m):
+#         day=0
+#         for j in range(n,t):
+#             if info[j][i]=='O':
+#                 day+=1
+#             else:
+#                 break
+
+#         if maxday<day:
+#             maxday=day
+#     return maxday
+
+
+# count=-1
+# today=s
+
+# while today<t:
     
-    stay=check(today)
+#     stay=check(today)
 
-    if stay==0:
-        count=-1
-        break
+#     if stay==0:
+#         count=-1
+#         break
 
-    #print(stay)
-    count+=1
-    today+=stay
+#     #print(stay)
+#     count+=1
+#     today+=stay
 
     
 
 
-print(count)
+# print(count)
